@@ -1,0 +1,177 @@
+<form page  html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: #0056b3;
+            padding: 0 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .gender-options label {
+            display: inline;
+            font-weight: normal;
+            margin-right: 15px;
+        }
+        .gender-options input {
+            margin-right: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>School Registration Form</h2>
+    <form action="/submit_registration" method="POST" enctype="multipart/form-data">
+        
+        <!-- Student Information -->
+        <fieldset>
+            <legend>Student Details</legend>
+            
+            <div class="form-group">
+                <label for="first_name">First Name *</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name *</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group gender-options">
+                <label>Gender *</label><br>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="Other">
+                <label for="other">Other</label>
+            </div>
+
+            <div class="form-group">
+                <label for="grade">Grade Applying For *</label>
+                <select id="grade" name="grade" required>
+                    <option value="">-- Select Grade --</option>
+                    <option value="Kindergarten">Kindergarten</option>
+                    <option value="Grade 1">Grade 1</option>
+                    <option value="Grade 2">Grade 2</option>
+                    <option value="Grade 3">Grade 3</option>
+                    <option value="Grade 4">Grade 4</option>
+                    <option value="Grade 5">Grade 5</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Parent/Guardian Information -->
+        <fieldset>
+            <legend>Parent / Guardian Details</legend>
+
+            <div class="form-group">
+                <label for="guardian_name">Parent/Guardian Name *</label>
+                <input type="text" id="guardian_name" name="guardian_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Residential Address *</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+        </fieldset>
+
+        <!-- Additional Information -->
+        <fieldset>
+            <legend>Additional Information</legend>
+
+            <div class="form-group">
+                <label for="previous_school">Previous School Attended (if any)</label>
+                <input type="text" id="previous_school" name="previous_school">
+            </div>
+
+            <div class="form-group">
+                <label for="documents">Upload Birth Certificate / Transcripts</label>
+                <input type="file" id="documents" name="documents">
+            </div>
+        </fieldset>
+
+        <button type="submit">Submit Registration</button>
+    </form>
+</div>
+
+</body>
+</html>
