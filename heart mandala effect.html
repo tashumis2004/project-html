@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Mandala Effect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="mandalaCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('mandalaCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let angleOffset = 0;
+
+        function drawMandala() {
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const maxRadius = Math.min(centerX, centerY) * 0.75;
+            const totalLoops = 180; // Total lines/loops in circle
+
+            for (let i = 0; i < totalLoops; i++) {
+                const angle = (i * Math.PI * 2) / totalLoops + angleOffset;
+                
+                // Color Gradient Calculation (Blue -> Magenta -> Red)
+                const hue = (i / totalLoops) * 300 + 200; // Hue range for blue/purple/magenta/red
+                ctx.strokeStyle = `hsl(${hue % 360}, 100%, 60%)`;
+                ctx.lineWidth = 1.2;
+
+                ctx.beginPath();
+
+                // Heart / Cardioid curve geometry
+                for (let t = 0; t <= Math.PI * 2; t += 0.05) {
+                    // Cardioid Math Formula
+                    const r = (maxRadius / 2) * (1 - Math.sin(t));
+                    
+                    // Coordinates rotated around center
+                    const x = centerX + r * Math.cos(t + angle);
+                    const y = centerY + r * Math.sin(t + angle);
+
+                    if (t === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+
+                ctx.stroke();
+            }
+
+            // Continuous Rotation Animation
+            angleOffset += 0.003;
+            requestAnimationFrame(drawMandala);
+        }
+
+        drawMandala();
+    </script>
+</body>
+</html>
