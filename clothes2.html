@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Swapnil's Clothing Store</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin:0; padding:0; }
+        header { background:#000; color:#fff; padding:20px; text-align:center; }
+        nav { background:#333; padding:10px; text-align:center; }
+        nav a { color:#fff; margin:0 15px; text-decoration:none; }
+        .banner { background:url('banner.jpg') no-repeat center; height:300px; color:white; display:flex; align-items:center; justify-content:center; font-size:2em; }
+        .products { display:flex; flex-wrap:wrap; justify-content:center; margin:20px; }
+        .product { border:1px solid #ccc; margin:10px; padding:15px; width:200px; text-align:center; }
+        .product img { width:100%; }
+        .cart { margin:20px; padding:20px; border:1px solid #ccc; }
+        footer { background:#000; color:#fff; text-align:center; padding:15px; }
+    </style>
+    <script>
+        let cart = [];
+        function addToCart(item, price) {
+            cart.push({item, price});
+            alert(item + " added to cart!");
+            showCart();
+        }
+        function showCart() {
+            let cartDiv = document.getElementById("cart");
+            cartDiv.innerHTML = "<h2>Shopping Cart</h2>";
+            let total = 0;
+            cart.forEach(c => {
+                cartDiv.innerHTML += `<p>${c.item} - ₹${c.price}</p>`;
+                total += c.price;
+            });
+            cartDiv.innerHTML += `<h3>Total: ₹${total}</h3>`;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Swapnil's Clothing Store</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="banner">Welcome to the Fashion World!</div>
+
+    <div class="products">
+        <div class="product">
+            <img src="shirt.jpg" alt="Shirt">
+            <h3>Casual Shirt</h3>
+            <p>₹499</p>
+            <button onclick="addToCart('Casual Shirt', 499)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="jeans.jpg" alt="Jeans">
+            <h3>Blue Jeans</h3>
+            <p>₹999</p>
+            <button onclick="addToCart('Blue Jeans', 999)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="cart" class="cart"></div>
+
+    <footer>
+        <p>Contact us: swapnil@example.com | Instagram: @swapnilstore</p>
+    </footer>
+</body>
+</html>

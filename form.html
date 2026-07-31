@@ -1,0 +1,77 @@
+<!DOCTYPE html> 
+<html>
+<head>     
+    <title>Student Registration Form</title>
+    <style>   
+       body {            
+           font-family: Arial;
+           background-color:#e8f0fe;
+        }         
+        .form-box {            
+            width: 400px;            
+            margin: 30px auto;            
+            background-color: white;           
+            padding: 25px;            
+            border-radius: 10px;            
+            box-shadow: 0 0 10px gray;        
+         }          
+         h2 {             
+            text-align: center;  
+            color: #003366;         
+         }         
+        label {            
+             font-weight: bold;        
+         }         
+         input, select, textarea {            
+             width: 100%;          
+             padding: 10px;            
+             margin-top: 5px;            
+             margin-bottom: 15px;           
+             box-sizing: border-box;        
+         }         
+         .gender {            
+             width: auto;
+         }
+        button {  
+             width: 100%;         
+             padding: 12px;
+             background-color: #0066cc;  
+             color: white;            
+             border: none;            
+             font-size: 16px;         
+             border-radius: 5px;
+        }
+        button:hover {             
+            background-color: #004c99;      
+       }     
+        </style>
+    </head>
+    <body> 
+    <div class="form-box"> 
+         <h2>Student Registration</h2>   
+         <form>         
+            <label>Student Name</label>  
+            <input type="text" placeholder="Enter your name" required>  
+            <label>Email Address</label>       
+            <input type="email" placeholder="Enter your email">    
+            <label>Mobile Number</label>     
+            <input type="tel" placeholder="Enter mobile number">
+            <label>Course</label>       
+            <select>          
+                <option>BCA</option>     
+                <option>B.Tech</option>        
+                <option>MCA</option>           
+                <option>Diploma</option> 
+           </select>          
+             <label>Gender</label><br>        
+             <input class="gender" type="radio" name="gender"> Male    
+             <input class="gender" type="radio" name="gender"> Female  
+             <br><br>        
+             <label>Address</label>       
+             <textarea rows="4"   
+             placeholder="Enter your address"></textarea>         
+            <button type="submit">Register</button>   
+       </form>
+ </div>
+ </body>
+ </html> 
